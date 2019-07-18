@@ -1,9 +1,7 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -18,7 +16,7 @@ public class LoginTest {
     }
 
     @Test
-    public void enterToTheSiteAndAssertion(){
+    public void loginToTheSiteAndVerification(){
         driver.get("http://nnmclub.to");
         WebElement buttonAuthorization = driver.findElement(By
                 .xpath("//*[contains(text(),'Вход')]"));
@@ -29,9 +27,9 @@ public class LoginTest {
         password.sendKeys("zadanie");
         WebElement buttonLogin =driver.findElement(By.className("mainoption"));
         buttonLogin.click();
-        Boolean isPresent = driver.findElements(By
+        boolean isPresentButtonLogout = driver.findElements(By
                .xpath("//*[contains(text(),'Выход [ Ксения00788 ]')]")).size()>0;
-        if (isPresent == true){
+        if (isPresentButtonLogout){
             System.out.println("Вход на сайт был успешным");
         }else {
             System.out.println("Вход на сайт не был успешным");
